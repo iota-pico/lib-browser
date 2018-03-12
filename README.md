@@ -31,12 +31,13 @@ TypeScript definitions can be found in the @iota-pico/lib-browser/pkg/iota-pico-
 
 ## Usage
 
-The library is compiled into a UMD that can be included directly in the browser or by using a module loader (Browserify/ParcelJS/RequireJS/SystemJS/Webpack). You can see various usage scenarios in the following tutorials:
+The library is compiled into a UMD that can be included directly in the browser or by using a module loader (Browserify/RequireJS/SystemJS/Webpack). You can see various usage scenarios in the following tutorials:
 
 * [Usage Library Script Include](https://github.com/iotaeco/iota-pico-tutorials/libScriptInclude)
+* [Usage Library Browserify](https://github.com/iotaeco/iota-pico-tutorials/libBrowserify)
 * [Usage Library RequireJS](https://github.com/iotaeco/iota-pico-tutorials/libRequireJs)
 * [Usage Library SystemJS](https://github.com/iotaeco/iota-pico-tutorials/libSystemJs)
-* [Usage Library Webpack](https://github.com/iotaeco/iota-pico-tutorials/liWebpack)
+* [Usage Library Webpack](https://github.com/iotaeco/iota-pico-tutorials/libWebpack)
 
 ## Documentation
 

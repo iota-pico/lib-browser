@@ -22,9 +22,14 @@ module.exports = {
         filename: "iota-pico-lib-browser" + (isProd ? '.min' : '') + '.js',
         libraryTarget: 'umd',
         libraryExport: 'default',
-        library: "IotaPico",
+        library: {
+            root: "IotaPico",
+            amd: "@iota-pico/lib-browser",
+            commonjs: "@iota-pico/lib-browser"
+        },
         umdNamedDefine: true
     },
+    target: "web",
     externals: {
         "big-integer": {
             "amd": "big-integer",
@@ -33,8 +38,9 @@ module.exports = {
             "root": "bigInt"
         }
     },
-    mode: isProd ? "production": "development",
-    devtool: isProd ? undefined : "inline-source-map",
+    mode: isProd ? "production" : "development",
+    // devtool: undefined,//isProd ? undefined : "inline-source-map",
+    // waiting on https://github.com/webpack/webpack/pull/6641
     module: {
         rules: [
             {
@@ -56,7 +62,7 @@ module.exports = {
                                 }
                             ],
                             [
-                                "babel-plugin-transform-builtin-extend", 
+                                "babel-plugin-transform-builtin-extend",
                                 {
                                     "globals": ["Error"]
                                 }
@@ -68,6 +74,14 @@ module.exports = {
         ]
     },
     node: {
-        fs: "empty"
+        fs: "empty",
+        path: "empty",
+        console: false,
+        global: false,
+        process: false,
+        __filename: false,
+        __dirname: false,
+        Buffer: false,
+        setImmediate: false
     }
 };

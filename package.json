@@ -39,7 +39,8 @@
         "dist": "npm-run-all build pkg"
     },
     "dependencies": {
-        "big-integer": "^1.6.26"
+        "big-integer": "^1.6.26",
+        "regenerator-runtime": "^0.11.1"
     },
     "devDependencies": {
         "@babel/core": "^7.0.0-beta.40",
