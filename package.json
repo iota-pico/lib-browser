@@ -1,6 +1,6 @@
 {
     "name": "@iota-pico/lib-browser",
-    "version": "0.7.0",
+    "version": "0.9.0",
     "description": "IOTA Pico Framework Library for Browser",
     "main": "pkg/iota-pico-lib-browser.js",
     "typings": "pkg/iota-pico-lib-browser.d.ts",
@@ -39,24 +39,23 @@
         "dist": "npm-run-all build pkg"
     },
     "dependencies": {
-        "big-integer": "^1.6.26",
-        "regenerator-runtime": "^0.11.1"
+        "big-integer": "^1.6.26"
     },
     "devDependencies": {
         "@babel/core": "^7.0.0-beta.40",
         "@babel/plugin-transform-runtime": "^7.0.0-beta.40",
         "@babel/preset-env": "^7.0.0-beta.40",
         "@babel/runtime": "^7.0.0-beta.40",
-        "@iota-pico/api": "^0.7.0",
-        "@iota-pico/business": "^0.7.0",
-        "@iota-pico/core": "^0.7.0",
-        "@iota-pico/crypto": "^0.7.0",
-        "@iota-pico/data": "^0.7.0",
-        "@iota-pico/pal-browser": "^0.7.0",
-        "@iota-pico/pow-box": "^0.7.0",
-        "@iota-pico/pow-js": "^0.7.0",
-        "@iota-pico/pow-wasm": "^0.7.0",
-        "@iota-pico/pow-webgl": "^0.7.0",
+        "@iota-pico/api": "^0.9.0",
+        "@iota-pico/business": "^0.9.0",
+        "@iota-pico/core": "^0.9.0",
+        "@iota-pico/crypto": "^0.9.0",
+        "@iota-pico/data": "^0.9.0",
+        "@iota-pico/pal-browser": "^0.9.0",
+        "@iota-pico/pow-box": "^0.9.0",
+        "@iota-pico/pow-js": "^0.9.0",
+        "@iota-pico/pow-wasm": "^0.9.0",
+        "@iota-pico/pow-webgl": "^0.9.0",
         "@types/node": "^9.4.7",
         "babel-loader": "^8.0.0-beta.0",
         "babel-plugin-transform-builtin-extend": "^1.1.2",
@@ -65,7 +64,8 @@
         "npm-run-all": "^4.1.2",
         "rimraf": "^2.6.2",
         "typescript": "^2.7.2",
-        "webpack": "^4.1.1",
+        "uglifyjs-webpack-plugin": "^1.2.3",
+        "webpack": "^3.11.0",
         "webpack-cli": "^2.0.10"
     }
 }

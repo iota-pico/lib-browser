@@ -13,6 +13,6 @@ __export(require("@iota-pico/business"));
 __export(require("@iota-pico/pal-browser"));
 __export(require("@iota-pico/pow-box"));
 __export(require("@iota-pico/pow-js"));
-__export(require("@iota-pico/pow-wasm"));
+// export * from "@iota-pico/pow-wasm";
 __export(require("@iota-pico/pow-webgl"));
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi9zcmMvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUFBOztHQUVHO0FBQ0gscUNBQWdDO0FBQ2hDLHFDQUFnQztBQUNoQyxvQ0FBK0I7QUFDL0IsdUNBQWtDO0FBQ2xDLHlDQUFvQztBQUNwQyw0Q0FBdUM7QUFDdkMsd0NBQW1DO0FBQ25DLHVDQUFrQztBQUNsQyx5Q0FBb0M7QUFDcEMsMENBQXFDIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi9zcmMvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUFBOztHQUVHO0FBQ0gscUNBQWdDO0FBQ2hDLHFDQUFnQztBQUNoQyxvQ0FBK0I7QUFDL0IsdUNBQWtDO0FBQ2xDLHlDQUFvQztBQUNwQyw0Q0FBdUM7QUFDdkMsd0NBQW1DO0FBQ25DLHVDQUFrQztBQUNsQyx1Q0FBdUM7QUFDdkMsMENBQXFDIn0=
