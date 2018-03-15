@@ -15,6 +15,7 @@ The IOTA Pico Framework Lib Browser is a combined library of all the following c
 * [@iota-pico/pal-browser](https://github.com/iotaeco/iota-pico-pal-browser) - Platform abstraction layer for the browser.
 * [@iota-pico/pow-box](https://github.com/iotaeco/iota-pico-pow-box) - Proof of Work using TestNet PowBox. (for TestNet)
 * [@iota-pico/pow-js](https://github.com/iotaeco/iota-pico-pow-js) - Proof of Work using JavaScript. (Very Slow - Single Threaded)
+* [@iota-pico/pow-wasm](https://github.com/iotaeco/iota-pico-pow-wasm) - Proof of Work using WebAssembly. (Slow - Single-Threaded)
 * [@iota-pico/pow-webgl](https://github.com/iotaeco/iota-pico-pow-webgl) - Proof of Work using WebGL. (Best Choice - Multi-Threaded)
 
 ## Installation
@@ -57,6 +58,7 @@ The documentation for each part of the library can be found in it's relevant rep
 * [@iota-pico/pal-browser documentation](https://github.com/iotaeco/iota-pico-pal-browser/docs/README.md)
 * [@iota-pico/pow-box documentation](https://github.com/iotaeco/iota-pico-pow-box/docs/README.md)
 * [@iota-pico/pow-js documentation](https://github.com/iotaeco/iota-pico-pow-js/docs/README.md)
+* [@iota-pico/pow-wasm documentation](https://github.com/iotaeco/iota-pico-pow-wasm/docs/README.md)
 * [@iota-pico/pow-webgl documentation](https://github.com/iotaeco/iota-pico-pow-webgl/docs/README.md)
 
 ## Tutorials
