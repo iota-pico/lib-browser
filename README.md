@@ -1,11 +1,11 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/iotaeco/iota-pico-lib-browser/master/LICENSE) [![Build Status](https://travis-ci.org/iotaeco/iota-pico-lib-browser.svg?branch=master)](https://travis-ci.org/iotaeco/iota-pico-lib-browser) 
 
 
-# IOTA Pico Framework Lib Browser
+# IOTA Pico Framework Lib for Browser
 
-## Introduction
+The IOTA Pico Framework library is an alternative to the official [iota.lib.js](https://github.com/iotaledger/iota.lib.js)
 
-The IOTA Pico Framework Lib Browser is a combined library of all the following components:
+The library is a bundle of all the following components:
 
 * [@iota-pico/core](https://github.com/iotaeco/iota-pico-core) - Core functions and helper classes.
 * [@iota-pico/data](https://github.com/iotaeco/iota-pico-data) - Data objects.
@@ -18,25 +18,27 @@ The IOTA Pico Framework Lib Browser is a combined library of all the following c
 * [@iota-pico/pow-wasm](https://github.com/iotaeco/iota-pico-pow-wasm) - Proof of Work using WebAssembly. (Slow - Single-Threaded)
 * [@iota-pico/pow-webgl](https://github.com/iotaeco/iota-pico-pow-webgl) - Proof of Work using WebGL. (Best Choice - Multi-Threaded)
 
-## Installation
+If you want to run on NodeJS try the alternate version [@iota-pico/lib-nodejs](https://github.com/iotaeco/iota-pico-lib-nodejs)
+
+# Installation
 
 ```shell
-npm install @iota-pico/lib-browser
+npm install @iota-pico/lib-browser --save
 ```
 
 The library also has a dependency of [big-integer](https://www.npmjs.com/package/big-integer) which should get installed with the main package.
 
 There are two variants of the library
 
-* development - which is not minified and includes source maps in @iota-pico/lib-browser/pkg/iota-pico-lib-browser.js
+* development - which is not minified and includes source maps in [pkg/iota-pico-lib-browser.js](./pkg/iota-pico-lib-browser.js)
 
-* production - which is minified and has no  source maps in @iota-pico/lib-browser/pkg/iota-pico-lib-browser.min.js
+* production - which is minified and has no  source maps in [pkg/iota-pico-lib-browser.min.js](./pkg/iota-pico-lib-browser.min.js)
 
-## TypeScript Definitions
+# TypeScript Definitions
 
-TypeScript definitions can be found in the @iota-pico/lib-browser/pkg/iota-pico-lib-browser.d.ts and should be located automatically by your developments tools.
+TypeScript definitions can be found in the [pkg/iota-pico-lib-browser.d.ts](./pkg/iota-pico-lib-browser.d.ts) and should be located automatically by your developments tools.
 
-## Usage
+# Usage
 
 The library is compiled into a UMD that can be included directly in the browser or by using a module loader (Browserify/RequireJS/SystemJS/Webpack). You can see various usage scenarios in the following browser tutorials:
 
@@ -46,7 +48,7 @@ The library is compiled into a UMD that can be included directly in the browser 
 * [Usage Library SystemJS](https://github.com/iotaeco/iota-pico-tutorials/using-library/browser/getNodeInfoSystemJS/README.md)
 * [Usage Library Webpack](https://github.com/iotaeco/iota-pico-tutorials/using-library/browser/getNodeInfoWebpack/README.md)
 
-## Documentation
+# Documentation
 
 The documentation for each part of the library can be found in it's relevant repository:
 
@@ -61,7 +63,27 @@ The documentation for each part of the library can be found in it's relevant rep
 * [@iota-pico/pow-wasm documentation](https://github.com/iotaeco/iota-pico-pow-wasm/docs/README.md)
 * [@iota-pico/pow-webgl documentation](https://github.com/iotaeco/iota-pico-pow-webgl/docs/README.md)
 
-## Tutorials
+# Tutorials
 
-Additional tutorials can be found in the following repo [@iota-pico/tutorials](https://github.com/iotaeco/iota-pico-tutorials)
+Tutorials can be found in the following repo [@iota-pico/tutorials](https://github.com/iotaeco/iota-pico-tutorials)
 
+# Contributing
+
+Contributions are always welcome to the project. Feel free to raise issues, create pull requests or just make suggestions.
+
+# Authors
+
+Come and find us on the IOTA [Discord](https://discordapp.com/invite/fNGZXvh) development channels
+
+* **Martyn Janes** - *obany* - ([https://github.com/obany](https://github.com/obany))
+
+# Donations
+
+IOTA donations are always welcome :smile:
+```shell
+QWJXX99QDEYWUWXEGA9QXSNOWOKHMFKCMSZTXDFLRZAFQRPQTHQDXSZWQQTAHNDNRYHMIKJYWQLKTFHBWSAOJDHAMB
+```
+
+# License
+
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
