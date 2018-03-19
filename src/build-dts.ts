@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 
-async function buildDts(imports: string[], outputFilename: string, sources: string[]): Promise<void> {
+export async function buildDts(imports: string[], sourceIndex: string, outputFilename: string): Promise<void> {
     let finalContent: string = "";
 
     if (imports && imports.length > 0) {
@@ -9,6 +9,14 @@ async function buildDts(imports: string[], outputFilename: string, sources: stri
             finalContent += `${im}\n`;
         });
         finalContent += `\n`;
+    }
+
+    const sources: string[] = [];
+    const sourceScript: string = fs.readFileSync(sourceIndex).toString();
+    const sourceExports: RegExpMatchArray = sourceScript.match(/export \* from \"(.*)\";/g);
+
+    for (let i: number = 0; i < sourceExports.length; i++) {
+        sources.push(/export \* from \"(.*)\";/g.exec(sourceExports[i])[1]);
     }
 
     for (let i: number = 0; i < sources.length; i++) {
@@ -41,17 +49,6 @@ buildDts(
     [
         "import bigInt from \"big-integer\";"
     ],
-    path.join("./pkg/", "iota-pico-lib-browser.d.ts"),
-    [
-        "@iota-pico/core",
-        "@iota-pico/data",
-        "@iota-pico/api",
-        "@iota-pico/crypto",
-        "@iota-pico/business",
-        "@iota-pico/pal-browser",
-        "@iota-pico/pow-box",
-        "@iota-pico/pow-js",
-        // "@iota-pico/pow-wasm",
-        "@iota-pico/pow-webgl"
-    ]
+    "./src/index-all.ts",
+    "./pkg/iota-pico-lib-browser.d.ts"
 );

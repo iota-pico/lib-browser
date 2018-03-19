@@ -31,8 +31,15 @@ The library also has a dependency of [big-integer](https://www.npmjs.com/package
 There are two variants of the library
 
 * development - which is not minified and includes source maps in [pkg/iota-pico-lib-browser.js](./pkg/iota-pico-lib-browser.js)
+* production - which is minified and has no source maps in [pkg/iota-pico-lib-browser.min.js](./pkg/iota-pico-lib-browser.min.js)
 
-* production - which is minified and has no  source maps in [pkg/iota-pico-lib-browser.min.js](./pkg/iota-pico-lib-browser.min.js)
+If you don't want all of the proof of work algorithms, there are some alternative smaller packages:
+
+* [pkg/iota-pico-lib-browser-none.js](./pkg/iota-pico-lib-browser-none.js) - No Proof Of Work algorithms
+* [pkg/iota-pico-lib-browser-none.min.js](./pkg/iota-pico-lib-browser-none.min.js) - No Proof Of Work algorithms
+* [pkg/iota-pico-lib-browser-webgl.js](./pkg/iota-pico-lib-browser-webgl.js) - Fastest for Platform
+* [pkg/iota-pico-lib-browser-webgl.min.js](./pkg/iota-pico-lib-browser-webgl.min.js) - Fastest for Platform
+
 
 # TypeScript Definitions
 
@@ -42,26 +49,26 @@ TypeScript definitions can be found in the [pkg/iota-pico-lib-browser.d.ts](./pk
 
 The library is compiled into a UMD that can be included directly in the browser or by using a module loader (Browserify/RequireJS/SystemJS/Webpack). You can see various usage scenarios in the following browser tutorials:
 
-* [Usage Library Script Include](https://github.com/iotaeco/iota-pico-tutorials/using-library/browser/getNodeInfoScriptInclude/README.md)
-* [Usage Library Browserify](https://github.com/iotaeco/iota-pico-tutorials/using-library/browser/getNodeInfoBrowserify/README.md)
-* [Usage Library RequireJS](https://github.com/iotaeco/iota-pico-tutorials/using-library/browser/getNodeInfoRequireJS/README.md)
-* [Usage Library SystemJS](https://github.com/iotaeco/iota-pico-tutorials/using-library/browser/getNodeInfoSystemJS/README.md)
-* [Usage Library Webpack](https://github.com/iotaeco/iota-pico-tutorials/using-library/browser/getNodeInfoWebpack/README.md)
+* [Usage Library Script Include](https://github.com/iotaeco/iota-pico-tutorials/blob/master/using-library/browser/getNodeInfoScriptInclude/README.md)
+* [Usage Library Browserify](https://github.com/iotaeco/iota-pico-tutorials/blob/master/using-library/browser/getNodeInfoBrowserify/README.md)
+* [Usage Library RequireJS](https://github.com/iotaeco/iota-pico-tutorials/blob/master/using-library/browser/getNodeInfoRequireJS/README.md)
+* [Usage Library SystemJS](https://github.com/iotaeco/iota-pico-tutorials/blob/master/using-library/browser/getNodeInfoSystemJS/README.md)
+* [Usage Library Webpack](https://github.com/iotaeco/iota-pico-tutorials/blob/master/using-library/browser/getNodeInfoWebpack/README.md)
 
 # Documentation
 
 The documentation for each part of the library can be found in it's relevant repository:
 
-* [@iota-pico/core documentation](https://github.com/iotaeco/iota-pico-core/docs/README.md)
-* [@iota-pico/data documentation](https://github.com/iotaeco/iota-pico-data/docs/README.md)
-* [@iota-pico/api documentation](https://github.com/iotaeco/iota-pico-api/docs/README.md)
-* [@iota-pico/crypto documentation](https://github.com/iotaeco/iota-pico-crypto/docs/README.md)
-* [@iota-pico/business documentation](https://github.com/iotaeco/iota-pico-business/docs/README.md)
-* [@iota-pico/pal-browser documentation](https://github.com/iotaeco/iota-pico-pal-browser/docs/README.md)
-* [@iota-pico/pow-box documentation](https://github.com/iotaeco/iota-pico-pow-box/docs/README.md)
-* [@iota-pico/pow-js documentation](https://github.com/iotaeco/iota-pico-pow-js/docs/README.md)
-* [@iota-pico/pow-wasm documentation](https://github.com/iotaeco/iota-pico-pow-wasm/docs/README.md)
-* [@iota-pico/pow-webgl documentation](https://github.com/iotaeco/iota-pico-pow-webgl/docs/README.md)
+* [@iota-pico/core documentation](https://github.com/iotaeco/iota-pico-core/blob/master/docs/README.md)
+* [@iota-pico/data documentation](https://github.com/iotaeco/iota-pico-data/blob/master/docs/README.md)
+* [@iota-pico/api documentation](https://github.com/iotaeco/iota-pico-api/blob/master/docs/README.md)
+* [@iota-pico/crypto documentation](https://github.com/iotaeco/iota-pico-crypto/blob/master/docs/README.md)
+* [@iota-pico/business documentation](https://github.com/iotaeco/iota-pico-business/blob/master/docs/README.md)
+* [@iota-pico/pal-browser documentation](https://github.com/iotaeco/iota-pico-pal-browser/blob/master/docs/README.md)
+* [@iota-pico/pow-box documentation](https://github.com/iotaeco/iota-pico-pow-box/blob/master/docs/README.md)
+* [@iota-pico/pow-js documentation](https://github.com/iotaeco/iota-pico-pow-js/blob/master/docs/README.md)
+* [@iota-pico/pow-wasm documentation](https://github.com/iotaeco/iota-pico-pow-wasm/blob/master/docs/README.md)
+* [@iota-pico/pow-webgl documentation](https://github.com/iotaeco/iota-pico-pow-webgl/blob/master/docs/README.md)
 
 # Tutorials
 

@@ -5,6 +5,9 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const pkgFolder = path.join(__dirname, './pkg');
 const bootstrapFile = path.join(pkgFolder, 'bootstrap.js');
 
+const isProd = process.env.NODE_ENV === 'production';
+const outputLibName = process.env.LIB_VER === 'all' ? "" : `-${process.env.LIB_VER}`; 
+
 let isDir = false;
 try {
     isDir = fs.lstatSync(pkgFolder).isDirectory();
@@ -12,9 +15,7 @@ try {
 if (!isDir) {
     fs.mkdirSync(pkgFolder);
 }
-fs.writeFileSync(bootstrapFile, "exports.default = require(\"../dist/index\");");
-
-const isProd = process.env.NODE_ENV === 'production';
+fs.writeFileSync(bootstrapFile, `exports.default = require("../dist/index-${process.env.LIB_VER}");`);
 
 const plugins = [];
 if (isProd) {
@@ -25,7 +26,7 @@ module.exports = {
     entry: bootstrapFile,
     output: {
         path: path.resolve(__dirname, './pkg'),
-        filename: "iota-pico-lib-browser" + (isProd ? '.min' : '') + '.js',
+        filename: "iota-pico-lib-browser" + outputLibName + (isProd ? '.min' : '') + '.js',
         libraryTarget: 'umd',
         libraryExport: 'default',
         library: {
