@@ -25,7 +25,7 @@ if (isProd) {
 module.exports = {
     entry: bootstrapFile,
     output: {
-        path: path.resolve(__dirname, './pkg'),
+        path: pkgFolder,
         filename: "iota-pico-lib-browser" + outputLibName + (isProd ? '.min' : '') + '.js',
         libraryTarget: 'umd',
         libraryExport: 'default',
