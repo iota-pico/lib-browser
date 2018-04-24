@@ -84,11 +84,11 @@ module.exports = {
         fs: "empty",
         path: "empty",
         console: false,
-        global: false,
-        process: false,
+        global: true,
+        process: true,
         __filename: false,
         __dirname: false,
-        Buffer: false,
+        Buffer: true,
         setImmediate: false
     },
     plugins
