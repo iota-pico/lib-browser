@@ -2,7 +2,7 @@
     "name": "@iota-pico/lib-browser",
     "version": "0.9.3",
     "description": "IOTA Pico Framework Library for Browser",
-    "main": "dist/index.js",
+    "main": "pkg/iota-pico-lib-browser.js",
     "typings": "pkg/iota-pico-lib-browser.d.ts",
     "module": "dist/index-all.js",
     "keywords": [
