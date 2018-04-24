@@ -10,10 +10,9 @@ __export(require("@iota-pico/data"));
 __export(require("@iota-pico/api"));
 __export(require("@iota-pico/crypto"));
 __export(require("@iota-pico/business"));
-//export * from "@iota-pico/storage";
 __export(require("@iota-pico/pal-browser"));
 const pal_browser_1 = require("@iota-pico/pal-browser");
 (async function () {
     await pal_browser_1.PAL.initialize();
 })();
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXgtbm9uZS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uL3NyYy9pbmRleC1ub25lLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7QUFBQTs7R0FFRztBQUNILHFDQUFnQztBQUNoQyxxQ0FBZ0M7QUFDaEMsb0NBQStCO0FBQy9CLHVDQUFrQztBQUNsQyx5Q0FBb0M7QUFDcEMscUNBQXFDO0FBQ3JDLDRDQUF1QztBQUV2Qyx3REFBNkM7QUFFN0MsQ0FBQyxLQUFLO0lBQ0YsTUFBTSxpQkFBRyxDQUFDLFVBQVUsRUFBRSxDQUFDO0FBQzNCLENBQUMsQ0FBQyxFQUFFLENBQUMifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXgtbm9uZS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uL3NyYy9pbmRleC1ub25lLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7QUFBQTs7R0FFRztBQUNILHFDQUFnQztBQUNoQyxxQ0FBZ0M7QUFDaEMsb0NBQStCO0FBQy9CLHVDQUFrQztBQUNsQyx5Q0FBb0M7QUFDcEMsNENBQXVDO0FBRXZDLHdEQUE2QztBQUU3QyxDQUFDLEtBQUs7SUFDRixNQUFNLGlCQUFHLENBQUMsVUFBVSxFQUFFLENBQUM7QUFDM0IsQ0FBQyxDQUFDLEVBQUUsQ0FBQyJ9
