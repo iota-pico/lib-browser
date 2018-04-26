@@ -35,6 +35,7 @@ export class CoreError extends Error {
     static isError(obj: any): obj is CoreError;
     /**
      * Format the error to a readable version.
+     * @returns Formatted version of the error.
      */
     format(): string;
 }
@@ -276,7 +277,7 @@ export class ObjectHelper {
     /**
      * Is the value an object if given type.
      * @param value Object to test.
-     * @param type The type of the object
+     * @param typeConstructor A callback method which returns an instance of the object.
      * @returns True if the value is an object of the specified type.
      */
     static isType(value: any, typeConstructor: Function): boolean;
@@ -385,6 +386,17 @@ export interface INetworkClient {
     postJson<T, U>(data: T, additionalPath?: string, additionalHeaders?: {
         [header: string]: string;
     }): Promise<U>;
+    /**
+     * Perform a request asynchronously.
+     * @param method The method to send the data with.
+     * @param data The data to send.
+     * @param additionalPath An additional path append to the endpoint path.
+     * @param additionalHeaders Extra headers to send with the request.
+     * @returns Promise which resolves to the object returned or rejects with error.
+     */
+    doRequest(method: string, data: string, additionalPath?: string, additionalHeaders?: {
+        [header: string]: string;
+    }): Promise<string>;
 }
 
 /**
@@ -426,29 +438,52 @@ export interface INetworkEndPoint {
 export interface IPlatformCrypto {
     /**
      * Encrypt the given data.
+     * @param privateKey The key to use for encrypting data.
      * @param data The data to encrypt.
      * @returns The encrypted data.
      */
-    encrypt(data: string): string;
+    encrypt(privateKey: string, data: string): string;
     /**
      * Decrypt the given data.
+     * @param publicKey The key to use for decrypting data.
      * @param data The data to decrypt.
      * @returns The decrypted data.
      */
-    decrypt(data: string): string;
+    decrypt(publicKey: string, data: string): string;
     /**
      * Sign the given data.
+     * @param privateKey The key to use for signing data.
      * @param data The data to sign.
      * @returns The signature.
      */
-    sign(data: string): string;
+    sign(privateKey: string, data: string): string;
     /**
      * Verify the given data with the signature.
+     * @param publicKey The key to use for verifying data.
      * @param data The data to verify.
      * @param signature The signature to verify againt the data.
      * @returns True if the verification is successful.
      */
-    verify(data: string, signature: string): boolean;
+    verify(publicKey: string, data: string, signature: string): boolean;
+    /**
+     * Hash the data.
+     * @param algo The algorithm to use.
+     * @param data The data to hash.
+     * @param dataType The type of the input data utf8, ascii, latin1.
+     * @param encoding The encoding to return the data latin1, hex, base64.
+     * @returns The hash of the data.
+     */
+    hash(algo: string, data: any, dataType?: "utf8" | "ascii" | "latin1", encoding?: "latin1" | "hex" | "base64"): any;
+    /**
+     * HMAC the data.
+     * @param algo The algorithm to use.
+     * @param key The key to hash the data with.
+     * @param data The data to hash.
+     * @param dataType The type of the input data utf8, ascii, latin1.
+     * @param encoding The encoding to return the data latin1, hex, base64.
+     * @returns The hmac of the data.
+     */
+    hmac(algo: string, key: any, data: any, dataType?: "utf8" | "ascii" | "latin1", encoding?: "latin1" | "hex" | "base64"): any;
 }
 
 /**
@@ -487,6 +522,8 @@ export type NetworkProtocol = "http" | "https";
 export class ConsoleLogger implements ILogger {
     /**
      * Create and instance of the console logger.
+     * @param loggingObject The object to send all the logging to.
+     * @returns A new instance of ConsoleLogger.
      */
     constructor(loggingObject?: Console);
     /**
@@ -606,6 +643,7 @@ export class BackgroundTaskService implements IBackgroundTaskService {
      * Create a background task.
      * @param task The task to run in the background.
      * @param delay The delay before running the task.
+     * @returns The result of the background task.
      */
     create<T>(task: () => Promise<T>, delay: number): Promise<T>;
 }
@@ -627,7 +665,7 @@ export class TimeService implements ITimeService {
 export class AsciiTrytesConverter implements ITrytesConverter<string> {
     /**
      * Convert a string value into trytes.
-     * @param string value to convert into trytes.
+     * @param value value to convert into trytes.
      * @returns The trytes representation of the value.
      */
     to(value: string): Trytes;
@@ -646,7 +684,7 @@ export class AsciiTrytesConverter implements ITrytesConverter<string> {
 export class ObjectTrytesConverter<T> implements ITrytesConverter<T> {
     /**
      * Convert an object value into trytes.
-     * @param object to convert into trytes.
+     * @param value to convert into trytes.
      * @returns The trytes representation of the object.
      */
     to(value: T): Trytes;
@@ -1001,7 +1039,7 @@ export class Transfer {
      * Create instance of transfer from parameters.
      * @param address The address.
      * @param value The value.
-     * @param messsage The message for the transfer.
+     * @param message The message for the transfer.
      * @param tag The tag.
      * @returns New instance of Transfer.
      */
@@ -1229,12 +1267,14 @@ export class ApiClient implements IApiClient {
     /**
      * Add a list of neighbors to your node. It should be noted that this is only temporary,
      * and the added neighbors will be removed from your set of neighbors after you relaunch IRI.
+     * @param request The add neighbours request object.
      * @returns Promise which resolves to the addNeighbors response object or rejects with error.
      */
     addNeighbors(request: IAddNeighborsRequest): Promise<IAddNeighborsResponse>;
     /**
      * Removes a list of neighbors from your node. This is only temporary, and if you have your
      * neighbors added via the command line, they will be retained after you restart your node.
+     * @param request The remove neighbours request object.
      * @returns Promise which resolves to the removeNeighbors response object or rejects with error.
      */
     removeNeighbors(request: IRemoveNeighborsRequest): Promise<IRemoveNeighborsResponse>;
@@ -1248,12 +1288,14 @@ export class ApiClient implements IApiClient {
      * for which a list of return values (transaction hashes), in the same order, is returned for all
      * individual elements. The input fields can either be bundles, addresses, tags or approvees.
      * Using multiple of these input fields returns the intersection of the values.
+     * @param request The find transactions request object.
      * @returns Promise which resolves to the findTransactions response object or rejects with error.
      */
     findTransactions(request: IFindTransactionsRequest): Promise<IFindTransactionsResponse>;
     /**
      * Returns the raw transaction data (trytes) of a specific transaction.
      * These trytes can then be easily converted into the actual transaction object.
+     * @param request The get trytes request object.
      * @returns Promise which resolves to the findTransactions response object or rejects with error.
      */
     getTrytes(request: IGetTrytesRequest): Promise<IGetTrytesResponse>;
@@ -1261,6 +1303,7 @@ export class ApiClient implements IApiClient {
      * Get the inclusion states of a set of transactions. This is for determining if a transaction
      * was accepted and confirmed by the network or not. You can search for multiple tips (and thus,
      * milestones) to get past inclusion states of transactions.
+     * @param request The get inclusion states request object.
      * @returns Promise which resolves to the getInclusionStates response object or rejects with error.
      */
     getInclusionStates(request: IGetInclusionStatesRequest): Promise<IGetInclusionStatesResponse>;
@@ -1985,7 +2028,7 @@ export class ISS {
      * Create the key for the seed.
      * @param seed The seed to create the key for.
      * @param index The index to use for the seed.
-     * @param length The security level to create the key.
+     * @param security The security level to create the key.
      * @param spongeType The sponge type to use for operations.
      * @returns the key.
      */
@@ -2056,6 +2099,7 @@ export class BigIntegerHelper {
      * @param trits The trits to convert.
      * @param offset Offset within the array to start.
      * @param length The length of the trits array to convert.
+     * @returns Big integer version of trits.
      */
     static tritsToBigInteger(trits: Int8Array, offset: number, length: number): bigInt.BigInteger;
     /**
@@ -2078,6 +2122,7 @@ export class BigIntegerHelper {
      * @param source The source bytes.
      * @param offset The offset within the bytes to start conversion.
      * @param length The length of the bytes to use for conversion.
+     * @returns Big integer version of bytes.
      */
     static bytesToBigInteger(source: ArrayBuffer, offset: number, length: number): bigInt.BigInteger;
 }
@@ -2173,6 +2218,7 @@ export abstract class ProofOfWorkBase implements IProofOfWork {
     /**
      * Allow the proof of work to perform any initialization.
      * Will throw an exception if the implementation is not supported.
+     * @returns Promise.
      */
     initialize(): Promise<void>;
     /**
@@ -2208,7 +2254,7 @@ export class Curl implements ISponge {
     constructor(rounds?: number);
     /**
      * Get the constant for the spone.
-     * @name The name of the contant to get.
+     * @param name The name of the constant to get.
      * @returns The constant.
      */
     getConstant(name: string): number;
@@ -2253,7 +2299,7 @@ export class Kerl implements ISponge {
     constructor();
     /**
      * Get the constant for the spone.
-     * @name The name of the contant to get.
+     * @param name The name of the constant to get.
      * @returns The constant.
      */
     getConstant(name: string): number;
@@ -2328,6 +2374,7 @@ export class BundleHelper {
      * Prepare a bundle.
      * @param timeService To use for stamping the transactions.
      * @param transfers The transfers to add to the bundle.
+     * @returns Bundle information.
      */
     static prepareBundle(timeService: ITimeService, transfers: Transfer[]): {
         bundle: Bundle;
@@ -2639,6 +2686,7 @@ export class MultiSigClient {
      * @param balance The balance available for the transfer, if 0 will call getBalances to lookup available.
      * @param transfers The transfers to perform.
      * @param remainderAddress If there is a remainder after the transfer then send the amount to this address.
+     * @returns Bundle of the prepared transfer.
      */
     prepareTransfer(address: Address, securitySum: number, balance: number, transfers: Transfer[], remainderAddress?: Address): Promise<Bundle>;
 }
@@ -2654,6 +2702,7 @@ export class HmacCurl {
     constructor(key: Trytes);
     /**
      * Add bundle to the HMAC.
+     * @param bundle The bundle to add the HMAC to.
      */
     addHMAC(bundle: Bundle): void;
 }
@@ -2689,11 +2738,13 @@ export class TransactionClient implements ITransactionClient {
     findTransactions(bundles?: Hash[], addresses?: Address[], tags?: Tag[], approvees?: Hash[]): Promise<Hash[]>;
     /**
      * Get the transaction details of specific transactions.
+     * @param transactionHashes The hashes to get the transactions for.
      * @returns Promise which resolves to the list of transactions or rejects with error.
      */
     getTransactionsObjects(transactionHashes: Hash[]): Promise<Transaction[]>;
     /**
      * Get the inclusion states of a list of transaction hashes.
+     * @param transactionHashes The hashes to get the inclusion states for.
      * @returns Promise which resolves to the list of inclusion states or rejects with error.
      */
     getLatestInclusion(transactionHashes: Hash[]): Promise<boolean[]>;
@@ -2743,12 +2794,7 @@ export class TransactionClient implements ITransactionClient {
      * Prepares transfer by generating bundle, finding and signing inputs.
      * @param seed The seed to prepare the transfer for.
      * @param transfers The transfers to prepare.
-     * @param transferOptions
-     *      @property inputs List of inputs used for funding the transfer.
-     *      @property security Security level to be used for the private key / addresses.
-     *      @property remainderAddress If defined, this address will be used for sending the remainder value (of the inputs) to.
-     *      @property hmacKey Hmac key to sign the bundle.
-     *      @property reference The transaction to reference.
+     * @param transferOptions Additional options for the transfer.
      * @returns Promise which resolves to the array of Trytes for the transfer or rejects with error.
      */
     prepareTransfers(seed: Hash, transfers: Transfer[], transferOptions?: TransferOptions): Promise<Bundle>;
@@ -2777,10 +2823,6 @@ export class TransactionClient implements ITransactionClient {
      * @param minWeightMagnitude The minimum weight magnitude for the proof of work.
      * @param transfers The transfers to send.
      * @param transferOptions Additional options for the transfer.
-     *      @property inputs List of inputs used for funding the transfer.
-     *      @property security Security level to be used for the private key / addresses.
-     *      @property remainderAddress If defined, this address will be used for sending the remainder value (of the inputs) to.
-     *      @property hmacKey Hmac key to sign the bundle.
      * @param reference The reference to send with the transactions.
      * @returns Promise which resolves to the list of transactions created or rejects with an error.
      */
@@ -2807,8 +2849,6 @@ export class TransactionClient implements ITransactionClient {
      * @param minWeightMagnitude The minimum weight magnitude for the proof of work.
      * @param transfers The transfers to send.
      * @param promoteOptions Additional options for the promote.
-     *      @property delay Delay between promotion transfers
-     *      @property interrupt Flag or method to terminate promotion.
      * @returns Promise which resolves to the list of transactions created or rejects with an error.
      */
     promoteTransaction(transactionTail: Hash, depth: number, minWeightMagnitude: number, transfers: Transfer[], promoteOptions?: PromoteOptions): Promise<Bundle>;
@@ -2888,7 +2928,13 @@ export type AccountData = {
  * Options used during promote process in promoteTransaction.
  */
 export type PromoteOptions = {
+    /**
+     * Delay between promotion transfers.
+     */
     delay?: number;
+    /**
+     * Flag or method to terminate promotion.
+     */
     interrupt?: boolean | (() => boolean);
 };
 
@@ -2896,9 +2942,21 @@ export type PromoteOptions = {
  * Options used during prepare transfer process prepareTransfers and sendTransfer.
  */
 export type TransferOptions = {
+    /**
+     * List of inputs used for funding the transfer.
+     */
     inputs?: Input[];
+    /**
+     * Security level to be used for the private key / addresses.
+     */
     security?: AddressSecurity;
+    /**
+     * If defined, this address will be used for sending the remainder value (of the inputs) to.
+     */
     remainderAddress?: Address;
+    /**
+     * Hmac key to sign the bundle.
+     */
     hmacKey?: Trytes;
 };
 
@@ -2908,6 +2966,7 @@ export type TransferOptions = {
 export class PAL {
     /**
      * Perform any initialization for the PAL.
+     * @returns Promise.
      */
     static initialize(): Promise<void>;
 }
@@ -2917,36 +2976,53 @@ export class PAL {
  */
 export class PlatformCrypto implements IPlatformCrypto {
     /**
-     * Create a new instance of PlatformCrypto.
-     * @param publicKey The key to use for decoding data.
-     * @param privateKey The key to use for encoding data.
-     */
-    constructor(publicKey: string, privateKey?: string);
-    /**
      * Encrypt the given data.
+     * @param privateKey The key to use for encrypting data.
      * @param data The data to encrypt.
      * @returns The encrypted data.
      */
-    encrypt(data: string): string;
+    encrypt(privateKey: string, data: string): string;
     /**
      * Decrypt the given data.
+     * @param publicKey The key to use for decrypting data.
      * @param data The data to decrypt.
      * @returns The decrypted data.
      */
-    decrypt(data: string): string;
+    decrypt(publicKey: string, data: string): string;
     /**
      * Sign the given data.
+     * @param privateKey The key to use for signing data.
      * @param data The data to sign.
      * @returns The signature.
      */
-    sign(data: string): string;
+    sign(privateKey: string, data: string): string;
     /**
      * Verify the given data.
+     * @param publicKey The key to use for verifying data.
      * @param data The data to verify.
      * @param signature The signature to verify againt the data.
      * @returns True if the verification is successful.
      */
-    verify(data: string, signature: string): boolean;
+    verify(publicKey: string, data: string, signature: string): boolean;
+    /**
+     * Hash the data.
+     * @param algo The algorithm to use.
+     * @param data The data to hash.
+     * @param dataType The type of the input data utf8, ascii, latin1.
+     * @param encoding The encoding to return the data latin1, hex, base64.
+     * @returns The hash of the data.
+     */
+    hash(algo: string, data: any, dataType?: "utf8" | "ascii" | "latin1", encoding?: "latin1" | "hex" | "base64"): any;
+    /**
+     * HMAC the data.
+     * @param algo The algorithm to use.
+     * @param key The key to hash the data with.
+     * @param data The data to hash.
+     * @param dataType The type of the input data utf8, ascii, latin1.
+     * @param encoding The encoding to return the data latin1, hex, base64.
+     * @returns The hash of the data.
+     */
+    hmac(algo: string, key: any, data: any, dataType?: "utf8" | "ascii" | "latin1", encoding?: "latin1" | "hex" | "base64"): any;
 }
 
 /**
@@ -2978,8 +3054,8 @@ export class NetworkClient implements INetworkClient {
     }): Promise<string>;
     /**
      * Post data asynchronously.
-     * @param additionalPath An additional path append to the endpoint path.
      * @param data The data to send.
+     * @param additionalPath An additional path append to the endpoint path.
      * @param additionalHeaders Extra headers to send with the request.
      * @returns Promise which resolves to the object returned or rejects with error.
      */
@@ -3008,6 +3084,17 @@ export class NetworkClient implements INetworkClient {
     postJson<T, U>(data: T, additionalPath?: string, additionalHeaders?: {
         [header: string]: string;
     }): Promise<U>;
+    /**
+     * Perform a request asynchronously.
+     * @param method The method to send the data with.
+     * @param data The data to send.
+     * @param additionalPath An additional path append to the endpoint path.
+     * @param additionalHeaders Extra headers to send with the request.
+     * @returns Promise which resolves to the object returned or rejects with error.
+     */
+    doRequest(method: string, data: string, additionalPath?: string, additionalHeaders?: {
+        [header: string]: string;
+    }): Promise<string>;
 }
 
 /**
@@ -3016,6 +3103,7 @@ export class NetworkClient implements INetworkClient {
 export class RngService implements IRngService {
     /**
      * Create a new instance of RngService.
+     * @param randomSource The source for the random generator.
      */
     constructor(randomSource?: IRngSource);
     /**
@@ -3040,6 +3128,7 @@ export class ProofOfWorkBox implements IProofOfWork {
     /**
      * Allow the proof of work to perform any initialization.
      * Will throw an exception if the implementation is not supported.
+     * @returns Promise.
      */
     initialize(): Promise<void>;
     /**
@@ -3084,6 +3173,7 @@ export class ProofOfWorkWasm extends ProofOfWorkBase {
     /**
      * Allow the proof of work to perform any initialization.
      * Will throw an exception if the implementation is not supported.
+     * @returns Promise.
      */
     initialize(): Promise<void>;
     /**
@@ -3116,6 +3206,7 @@ export class ProofOfWorkWebGl extends ProofOfWorkBase {
     /**
      * Allow the proof of work to perform any initialization.
      * Will throw an exception if the implementation is not supported.
+     * @returns Promise.
      */
     initialize(): Promise<void>;
     /**
