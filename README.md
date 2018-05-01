@@ -1,4 +1,4 @@
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/https://github.com/iota-pico/iota-pico-lib-browser/master/LICENSE) [![Build Status](https://travis-ci.org/https://github.com/iota-pico/iota-pico-lib-browser.svg?branch=master)](https://travis-ci.org/https://github.com/iota-pico/iota-pico-lib-browser) [![NSP Status](https://nodesecurity.io/orgs/https://github.com/iota-pico/projects/1b0bcb02-ba03-44c4-95ad-692c16246e9c/badge)](https://nodesecurity.io/orgs/https://github.com/iota-pico/projects/1b0bcb02-ba03-44c4-95ad-692c16246e9c)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/iota-pico/iota-pico-lib-browser/master/LICENSE) [![Build Status](https://travis-ci.org/iota-pico/iota-pico-lib-browser.svg?branch=master)](https://travis-ci.org/iota-pico/iota-pico-lib-browser) [![NSP Status](https://nodesecurity.io/orgs/iota-pico/projects/1b0bcb02-ba03-44c4-95ad-692c16246e9c/badge)](https://nodesecurity.io/orgs/iota-pico/projects/1b0bcb02-ba03-44c4-95ad-692c16246e9c)
 
 
 # IOTA Pico Framework Lib for Browser
