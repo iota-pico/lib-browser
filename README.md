@@ -1,6 +1,5 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/iota-pico/iota-pico-lib-browser/master/LICENSE) [![Build Status](https://travis-ci.org/iota-pico/iota-pico-lib-browser.svg?branch=master)](https://travis-ci.org/iota-pico/iota-pico-lib-browser) 
 
-
 # IOTA Pico Framework Lib for Browser
 
 The IOTA Pico Framework library is an alternative to the official [iota.lib.js](https://github.com/iotaledger/iota.lib.js)
