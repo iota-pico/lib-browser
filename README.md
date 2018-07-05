@@ -30,20 +30,19 @@ The library also has a dependency of [big-integer](https://www.npmjs.com/package
 
 There are two variants of the library
 
-* development - which is not minified and includes source maps in [pkg/iota-pico-lib-browser.js](./pkg/iota-pico-lib-browser.js)
-* production - which is minified and has no source maps in [pkg/iota-pico-lib-browser.min.js](./pkg/iota-pico-lib-browser.min.js)
+* development - which is not minified and includes source maps in [pkg/iota-pico-lib-browser.js](https://github.com/iota-pico/lib-browser/blob/master/pkg/iota-pico-lib-browser.js)
+* production - which is minified and has no source maps in [pkg/iota-pico-lib-browser.min.js](https://github.com/iota-pico/lib-browser/blob/master/pkg/iota-pico-lib-browser.min.js)
 
 If you don't want all of the proof of work algorithms, there are some alternative smaller packages:
 
-* [pkg/iota-pico-lib-browser-none.js](./pkg/iota-pico-lib-browser-none.js) - No Proof Of Work algorithms
-* [pkg/iota-pico-lib-browser-none.min.js](./pkg/iota-pico-lib-browser-none.min.js) - No Proof Of Work algorithms
-* [pkg/iota-pico-lib-browser-webgl.js](./pkg/iota-pico-lib-browser-webgl.js) - Fastest for Platform
-* [pkg/iota-pico-lib-browser-webgl.min.js](./pkg/iota-pico-lib-browser-webgl.min.js) - Fastest for Platform
-
+* [pkg/iota-pico-lib-browser-none.js](https://github.com/iota-pico/lib-browser/blob/master/pkg/iota-pico-lib-browser-none.js) - No Proof Of Work algorithms
+* [pkg/iota-pico-lib-browser-none.min.js](https://github.com/iota-pico/lib-browser/blob/master/pkg/iota-pico-lib-browser-none.min.js) - No Proof Of Work algorithms
+* [pkg/iota-pico-lib-browser-webgl.js](https://github.com/iota-pico/lib-browser/blob/master/pkg/iota-pico-lib-browser-webgl.js) - Fastest for Platform
+* [pkg/iota-pico-lib-browser-webgl.min.js](https://github.com/iota-pico/lib-browser/blob/master/pkg/iota-pico-lib-browser-webgl.min.js) - Fastest for Platform
 
 # TypeScript Definitions
 
-TypeScript definitions can be found in the [pkg/iota-pico-lib-browser.d.ts](./pkg/iota-pico-lib-browser.d.ts) and should be located automatically by your developments tools.
+TypeScript definitions can be found in the [pkg/iota-pico-lib-browser.d.ts](https://github.com/iota-pico/lib-browser/blob/master/pkg/iota-pico-lib-browser.d.ts) and should be located automatically by your developments tools.
 
 # Usage
 
@@ -87,10 +86,13 @@ Come and find us on the IOTA [Discord](https://discordapp.com/invite/fNGZXvh) de
 # Donations
 
 IOTA donations are always welcome :smile:
+
+![QR Code for Trinity](https://raw.githubusercontent.com/iota-pico/lib-browser/master/donation.png)
+
 ```shell
 QWJXX99QDEYWUWXEGA9QXSNOWOKHMFKCMSZTXDFLRZAFQRPQTHQDXSZWQQTAHNDNRYHMIKJYWQLKTFHBWSAOJDHAMB
 ```
 
 # License
 
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/iota-pico/lib-browser/blob/master/LICENSE) file for details.
