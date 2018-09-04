@@ -14,6 +14,7 @@ The library is a bundle of all the following components:
 * [@iota-pico/pal-browser](https://github.com/iota-pico/iota-pico-pal-browser) - Platform abstraction layer for the browser.
 * [@iota-pico/pow-box](https://github.com/iota-pico/iota-pico-pow-box) - Proof of Work using TestNet PowBox. (for TestNet)
 * [@iota-pico/pow-js](https://github.com/iota-pico/iota-pico-pow-js) - Proof of Work using JavaScript. (Very Slow - Single Threaded)
+* [@iota-pico/pow-srvio](https://github.com/iota-pico/iota-pico-pow-srvio) - Proof of Work using Remote powsrv.io web site api.
 * [@iota-pico/pow-wasm](https://github.com/iota-pico/iota-pico-pow-wasm) - Proof of Work using WebAssembly. (Slow - Single-Threaded)
 * [@iota-pico/pow-webgl](https://github.com/iota-pico/iota-pico-pow-webgl) - Proof of Work using WebGL. (Best Choice - Multi-Threaded)
 
@@ -65,6 +66,7 @@ The documentation for each part of the library can be found in it's relevant rep
 * [@iota-pico/pal-browser documentation](https://github.com/iota-pico/iota-pico-pal-browser/blob/master/docs/README.md)
 * [@iota-pico/pow-box documentation](https://github.com/iota-pico/iota-pico-pow-box/blob/master/docs/README.md)
 * [@iota-pico/pow-js documentation](https://github.com/iota-pico/iota-pico-pow-js/blob/master/docs/README.md)
+* [@iota-pico/pow-srvio](https://github.com/iota-pico/iota-pico-pow-srvio/blob/master/docs/README.md)
 * [@iota-pico/pow-wasm documentation](https://github.com/iota-pico/iota-pico-pow-wasm/blob/master/docs/README.md)
 * [@iota-pico/pow-webgl documentation](https://github.com/iota-pico/iota-pico-pow-webgl/blob/master/docs/README.md)
 
@@ -78,7 +80,7 @@ Contributions are always welcome to the project. Feel free to raise issues, crea
 
 # Authors
 
-Come and find us on the IOTA [Discord](https://discordapp.com/invite/fNGZXvh) development channels
+Come and find us on the IOTA [Discord](https://discord.gg/JJysqe9) development channels
 
 * **Martyn Janes** - *obany* - ([https://github.com/obany](https://github.com/obany))
 
@@ -86,11 +88,7 @@ Come and find us on the IOTA [Discord](https://discordapp.com/invite/fNGZXvh) de
 
 IOTA donations are always welcome :smile:
 
-![QR Code for Trinity](https://raw.githubusercontent.com/iota-pico/lib-browser/master/donation.png)
-
-```shell
-QWJXX99QDEYWUWXEGA9QXSNOWOKHMFKCMSZTXDFLRZAFQRPQTHQDXSZWQQTAHNDNRYHMIKJYWQLKTFHBWSAOJDHAMB
-```
+![pico@tngl-me](https://cdn.tngl.me/tngl-me/pico/qr.svg)
 
 # License
 

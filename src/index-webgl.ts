@@ -1,17 +1,17 @@
 /**
  * Combined index of all the modules.
  */
-export * from "@iota-pico/core";
-export * from "@iota-pico/data";
-export * from "@iota-pico/api";
-export * from "@iota-pico/crypto";
-export * from "@iota-pico/business";
-export * from "@iota-pico/pal-browser";
-export * from "@iota-pico/pow-webgl";
+export * from "./core";
+export * from "./data";
+export * from "./api";
+export * from "./crypto";
+export * from "./business";
+export * from "./pal-browser";
+export * from "./pow-webgl";
 
-import { PAL } from "@iota-pico/pal-browser";
-import { ProofOfWorkFactory } from "@iota-pico/crypto";
-import { ProofOfWorkWebGl } from "@iota-pico/pow-webgl";
+import { PAL } from "./pal-browser";
+import { ProofOfWorkFactory } from "./crypto";
+import { ProofOfWorkWebGl } from "./pow-webgl";
 
 (async function (): Promise<void> {
     await PAL.initialize();

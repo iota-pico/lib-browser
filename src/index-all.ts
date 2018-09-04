@@ -1,28 +1,31 @@
 /**
  * Combined index of all the modules.
  */
-export * from "@iota-pico/core";
-export * from "@iota-pico/data";
-export * from "@iota-pico/api";
-export * from "@iota-pico/crypto";
-export * from "@iota-pico/business";
-export * from "@iota-pico/pal-browser";
-export * from "@iota-pico/pow-box";
-export * from "@iota-pico/pow-js";
-export * from "@iota-pico/pow-wasm";
-export * from "@iota-pico/pow-webgl";
+export * from "./core";
+export * from "./data";
+export * from "./api";
+export * from "./crypto";
+export * from "./business";
+export * from "./pal-browser";
+export * from "./pow-box";
+export * from "./pow-js";
+export * from "./pow-srvio";
+export * from "./pow-wasm";
+export * from "./pow-webgl";
 
-import { PAL } from "@iota-pico/pal-browser";
-import { ProofOfWorkFactory } from "@iota-pico/crypto";
-import { ProofOfWorkJs } from "@iota-pico/pow-js";
-import { ProofOfWorkBox } from "@iota-pico/pow-box";
-import { ProofOfWorkWebGl } from "@iota-pico/pow-webgl";
-import { ProofOfWorkWasm } from "@iota-pico/pow-wasm";
+import { PAL } from "./pal-browser";
+import { ProofOfWorkFactory } from "./crypto";
+import { ProofOfWorkJs } from "./pow-js";
+import { ProofOfWorkBox } from "./pow-box";
+import { ProofOfWorkSrvIo } from "./pow-srvio";
+import { ProofOfWorkWebGl } from "./pow-webgl";
+import { ProofOfWorkWasm } from "./pow-wasm";
 
 (async function (): Promise<void> {
     await PAL.initialize();
     ProofOfWorkFactory.instance().register("js", (...args) => new ProofOfWorkJs());
     ProofOfWorkFactory.instance().register("webgl", (...args) => new ProofOfWorkWebGl(args[0]));
+    ProofOfWorkFactory.instance().register("srvio", (...args) => new ProofOfWorkSrvIo(args[0], args[1]));
     ProofOfWorkFactory.instance().register("box", (...args) => new ProofOfWorkBox(args[0], args[1], args[2]));
     ProofOfWorkFactory.instance().register("wasm", (...args) => new ProofOfWorkWasm(args[0]));
 })();
