@@ -61,20 +61,20 @@
         "dist": "npm-run-all build pkg"
     },
     "dependencies": {
-        "big-integer": "^1.6.40"
+        "big-integer": "^1.6.41"
     },
     "devDependencies": {
         "@types/emscripten": "0.0.31",
-        "@types/jws": "^3.1.1",
-        "@types/node": "^10.12.18",
+        "@types/jws": "^3.2.0",
+        "@types/node": "^11.9.4",
         "cross-env": "^5.2.0",
         "ncp": "^2.0.0",
         "npm-run-all": "^4.1.5",
-        "replace-in-file": "^3.4.2",
-        "rimraf": "^2.6.2",
-        "terser-webpack-plugin": "^1.2.1",
-        "typescript": "^3.2.2",
-        "webpack": "^4.28.3",
-        "webpack-cli": "^3.1.2"
+        "replace-in-file": "^3.4.3",
+        "rimraf": "^2.6.3",
+        "terser-webpack-plugin": "^1.2.2",
+        "typescript": "^3.3.3",
+        "webpack": "^4.29.3",
+        "webpack-cli": "^3.2.3"
     }
 }
