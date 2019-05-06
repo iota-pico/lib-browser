@@ -64,7 +64,7 @@
         "big-integer": "^1.6.43"
     },
     "devDependencies": {
-        "@types/emscripten": "^0.0.31",
+        "@types/emscripten": "0.0.31",
         "@types/jws": "^3.2.0",
         "@types/node": "^11.11.6",
         "cross-env": "^5.2.0",
